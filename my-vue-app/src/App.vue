@@ -19,8 +19,8 @@
     <section id="galeri" class="p-6">
       <h2 class="text-2xl font-bold mb-4">Galeri Foto & Video</h2>
       <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
-        <img src="/foto1.jpg" class="rounded-lg shadow" alt="Foto 1">
-        <img src="/foto2.jpg" class="rounded-lg shadow" alt="Foto 2">
+        <img src="../public/image/foto1.jpg" class="rounded-lg shadow" alt="Foto 1">
+        <img src="../public/image/foto1.jpg" class="rounded-lg shadow" alt="Foto 2">
       </div>
     </section>
 
