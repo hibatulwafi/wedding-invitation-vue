@@ -711,7 +711,7 @@
             <span class="text-[10px] md:text-xs">Galeri</span>
           </a>
           <a
-            href="#ucapan"
+            href="#guestbook"
             class="flex flex-col items-center text-gray-600 flex-1"
           >
             <MessageSquare class="w-6 h-6 bounce-anim delay-600" />
