@@ -16,16 +16,26 @@
         <div class="absolute inset-0 bg-black bg-opacity-40"></div>
         <div class="relative z-10">
           <h1 class="text-5xl font-handwriting mb-4 text-white drop-shadow-lg" data-aos="zoom-in">
-            Undangan Pernikahan
+            The Wedding Of
           </h1>
           <p class="mb-6 text-white font-handwriting text-2xl drop-shadow-md" data-aos="fade-up" data-aos-delay="200">
             Wafi & Tisa
           </p>
-          <button @click="bukaUndangan"
-            class="bg-pink-500 text-white px-6 py-3 rounded-full shadow hover:bg-pink-600 transition transform hover:scale-105"
-            data-aos="zoom-in-up" data-aos-delay="400">
-            Buka Undangan
-          </button>
+
+          <!-- tampilkan nama tamu kalau ada -->
+          <p v-if="guestName" class="text-lg text-white mb-4" data-aos="fade-up" data-aos-delay="400">
+            Kepada Yth.<br />{{ guestName }}
+          </p>
+
+          <div class="flex justify-center">
+            <button @click="bukaUndangan" class="flex items-center gap-2 bg-pink-500 text-white px-6 py-3 rounded-full shadow 
+           hover:bg-pink-600 transition transform hover:scale-105" data-aos="zoom-in-up" data-aos-delay="400">
+              <Mail class="w-5 h-5" />
+              <span>Buka Undangan</span>
+            </button>
+          </div>
+
+
         </div>
       </section>
     </transition>
@@ -187,6 +197,25 @@
           </div>
         </section>
 
+        <!-- Live Streaming -->
+        <section id="live" class="p-6 bg-gray-50 text-center">
+          <h2 class="text-3xl font-handwriting text-pink-600 mb-6" data-aos="zoom-in">
+            Live Streaming
+          </h2>
+          <p class="text-gray-700 mb-6" data-aos="fade-up">
+            Bagi keluarga dan sahabat yang tidak dapat hadir,
+            dapat menyaksikan momen bahagia kami secara live melalui Instagram.
+          </p>
+
+          <a href="https://www.instagram.com/wafi_tisa_live" target="_blank"
+            class="inline-flex items-center gap-2 bg-gradient-to-r from-pink-500 to-purple-600 text-white px-6 py-3 rounded-full shadow-lg hover:scale-105 transform transition"
+            data-aos="zoom-in-up" data-aos-delay="200">
+            <Instagram class="w-6 h-6" />
+            <span>Tonton di Instagram</span>
+          </a>
+        </section>
+
+
         <!-- Story -->
         <section id="story" class="p-10 bg-cover bg-center relative text-center text-white"
           style="background-image: url('/image/bg-story.jpg')">
@@ -325,11 +354,13 @@
         </section>
 
         <!-- Guestbook -->
-        <section id="guestbook" class="p-6">
-          <h2 class="text-3xl font-handwriting text-pink-600 mb-6">Guestbook</h2>
+        <section id="guestbook" class="px-4 md:px-20 py-10 bg-white">
+          <h2 class="text-3xl font-handwriting text-pink-600 mb-6 text-center">
+            Guestbook
+          </h2>
 
           <!-- Form -->
-          <form @submit.prevent="addUcapan" class="flex flex-col md:flex-row gap-2 mb-4">
+          <form @submit.prevent="addUcapan" class="flex flex-col md:flex-row gap-2 mb-6">
             <input v-model="nama" placeholder="Nama" class="border p-2 rounded w-full md:flex-1" />
             <input v-model="pesan" placeholder="Ucapan" class="border p-2 rounded w-full md:flex-1" />
             <button class="bg-pink-500 text-white px-4 py-2 rounded w-full md:w-auto">
@@ -338,12 +369,31 @@
           </form>
 
           <!-- Daftar Ucapan -->
-          <ul class="space-y-3">
-            <li v-for="u in ucapan" :key="u.id" class="p-3 bg-gray-100 rounded shadow-sm">
-              <p class="font-semibold text-pink-600">{{ u.nama }}</p>
-              <p class="text-gray-700 text-sm">{{ u.pesan }}</p>
+          <ul class="space-y-3 mb-6">
+            <li v-for="u in paginatedUcapan" :key="u.id" class="p-3 bg-gray-100 rounded shadow-sm">
+              <div class="flex justify-between items-center">
+                <p class="font-semibold text-pink-600">{{ u.nama }}</p>
+                <span class="text-xs text-gray-500">
+                  {{ formatDate(u.createdAt) }}
+                </span>
+              </div>
+              <p class="text-gray-700 text-sm mt-1">{{ u.pesan }}</p>
             </li>
           </ul>
+
+          <!-- Pagination -->
+          <div class="flex justify-center items-center gap-4">
+            <button @click="prevPage" :disabled="page === 1" class="px-3 py-1 bg-gray-200 rounded disabled:opacity-50">
+              ‹
+            </button>
+            <span class="text-sm text-gray-600">
+              Halaman {{ page }} dari {{ totalPages }}
+            </span>
+            <button @click="nextPage" :disabled="page === totalPages"
+              class="px-3 py-1 bg-gray-200 rounded disabled:opacity-50">
+              ›
+            </button>
+          </div>
         </section>
 
 
@@ -417,8 +467,11 @@ import { Heart, BookOpen, Image, MessageSquare, Music } from "lucide-vue-next";
 import AOS from "aos";
 import "aos/dist/aos.css";
 
-import { db } from "./firebase.js"; 
+import { db } from "./firebase.js";
 import { collection, addDoc, onSnapshot, serverTimestamp, orderBy, query } from "firebase/firestore";
+
+// Buat state untuk nama tamu
+const guestName = ref("");
 
 // Countdown
 const countdown = ref({ days: "00", hours: "00", minutes: "00", seconds: "00" });
@@ -446,9 +499,42 @@ const googleCalendarUrl = computed(() => {
 const nama = ref("");
 const pesan = ref("");
 const ucapan = ref([]);
+const page = ref(1);
+const perPage = 5;
+
+const paginatedUcapan = computed(() => {
+  const start = (page.value - 1) * perPage;
+  return ucapan.value.slice(start, start + perPage);
+});
+
+const totalPages = computed(() =>
+  Math.ceil(ucapan.value.length / perPage)
+);
+
+function nextPage() {
+  if (page.value < totalPages.value) page.value++;
+}
+function prevPage() {
+  if (page.value > 1) page.value--;
+}
+
+// format tanggal dari Firestore Timestamp
+function formatDate(ts) {
+  if (!ts) return "";
+  const date = ts.toDate ? ts.toDate() : new Date(ts);
+  return new Intl.DateTimeFormat("id-ID", {
+    dateStyle: "medium",
+    timeStyle: "short"
+  }).format(date);
+}
+
 
 // Load guestbook realtime
 onMounted(() => {
+
+  const params = new URLSearchParams(window.location.search);
+  guestName.value = params.get("to") || "";
+
   document.fonts.ready.then(() => {
     setTimeout(() => { isLoading.value = false; }, 800);
   });
