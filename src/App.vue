@@ -178,27 +178,7 @@
             Mempelai
           </h2>
           <div class="grid grid-cols-1 md:grid-cols-2 gap-10 max-w-4xl mx-auto">
-            <div class="flex flex-col items-center" data-aos="fade-right">
-              <img
-                src="/image/fajar.jpeg"
-                alt="Foto Fajar"
-                class="w-40 h-40 object-cover rounded-full shadow-lg border-4 border-white mb-4"
-              />
-              <h3
-                class="text-2xl font-bold"
-                data-aos="zoom-in"
-                data-aos-delay="200"
-              >
-                Fajar
-              </h3>
-              <p
-                class="text-gray-600 text-sm"
-                data-aos="fade-up"
-                data-aos-delay="400"
-              >
-                Putra ke-3 dari Bpk Sucipto (Alm) & Ibu Dyah Susilo
-              </p>
-            </div>
+           
             <div class="flex flex-col items-center" data-aos="fade-left">
               <img
                 src="/image/farah.jpeg"
@@ -220,6 +200,29 @@
                 Putri ke-2 dari Bpk Thahirin Noer (Alm) & Ibu Saodah Abdul Qodir
               </p>
             </div>
+
+             <div class="flex flex-col items-center" data-aos="fade-right">
+              <img
+                src="/image/fajar.jpeg"
+                alt="Foto Fajar"
+                class="w-40 h-40 object-cover rounded-full shadow-lg border-4 border-white mb-4"
+              />
+              <h3
+                class="text-2xl font-bold"
+                data-aos="zoom-in"
+                data-aos-delay="200"
+              >
+                Fajar
+              </h3>
+              <p
+                class="text-gray-600 text-sm"
+                data-aos="fade-up"
+                data-aos-delay="400"
+              >
+                Putra ke-3 dari Bpk Sucipto (Alm) & Ibu Dyah Susilo
+              </p>
+            </div>
+            
           </div>
         </section>
 
