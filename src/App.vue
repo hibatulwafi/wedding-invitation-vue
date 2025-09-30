@@ -1,13 +1,8 @@
 <template>
   <div class="min-h-screen bg-gray-50 font-sans relative">
     <!-- 🔹 Loading Screen -->
-    <div
-      v-if="isLoading"
-      class="fixed inset-0 flex flex-col items-center justify-center bg-pink-100 z-[9999]"
-    >
-      <div
-        class="w-16 h-16 border-4 border-pink-400 border-t-transparent rounded-full animate-spin"
-      ></div>
+    <div v-if="isLoading" class="fixed inset-0 flex flex-col items-center justify-center bg-pink-100 z-[9999]">
+      <div class="w-16 h-16 border-4 border-pink-400 border-t-transparent rounded-full animate-spin"></div>
       <p class="mt-4 text-pink-600 font-handwriting text-xl animate-pulse">
         Loading...
       </p>
@@ -15,44 +10,27 @@
 
     <!-- Halaman Awal -->
     <transition name="fade">
-      <section
-        v-if="!isLoading && !isOpened"
+      <section v-if="!isLoading && !isOpened"
         class="relative flex flex-col items-center justify-center h-screen text-center p-6 bg-cover bg-center"
-        style="background-image: url('/image/bg-wedding.jpg')"
-      >
+        style="background-image: url('/image/bg-wedding.jpg')">
         <div class="absolute inset-0 bg-black bg-opacity-40"></div>
         <div class="relative z-10">
-          <h1
-            class="text-5xl font-handwriting mb-4 text-white drop-shadow-lg"
-            data-aos="zoom-in"
-          >
+          <h1 class="text-5xl font-handwriting mb-4 text-white drop-shadow-lg" data-aos="zoom-in">
             The Wedding Of
           </h1>
-          <p
-            class="mb-6 text-white font-handwriting text-2xl drop-shadow-md"
-            data-aos="fade-up"
-            data-aos-delay="200"
-          >
+          <p class="mb-6 text-white font-handwriting text-2xl drop-shadow-md" data-aos="fade-up" data-aos-delay="200">
             Wafi & Tisa
           </p>
 
           <!-- tampilkan nama tamu kalau ada -->
-          <p
-            v-if="guestName"
-            class="text-lg text-white mb-4"
-            data-aos="fade-up"
-            data-aos-delay="400"
-          >
+          <p v-if="guestName" class="text-lg text-white mb-4" data-aos="fade-up" data-aos-delay="400">
             Kepada Yth.<br />{{ guestName }}
           </p>
 
           <div class="flex justify-center">
-            <button
-              @click="bukaUndangan"
+            <button @click="bukaUndangan"
               class="flex items-center gap-2 bg-pink-500 text-white px-6 py-3 rounded-full shadow hover:bg-pink-600 transition transform hover:scale-105"
-              data-aos="zoom-in-up"
-              data-aos-delay="400"
-            >
+              data-aos="zoom-in-up" data-aos-delay="400">
               <Mail class="w-5 h-5" />
               <span>Buka Undangan</span>
             </button>
@@ -65,34 +43,21 @@
     <transition name="slide-fade">
       <div v-if="isOpened">
         <!-- Header -->
-        <header
-          class="text-center py-12 bg-cover bg-center relative"
-          style="background-image: url('/image/bg-header.jpg')"
-        >
+        <header class="text-center py-12 bg-cover bg-center relative"
+          style="background-image: url('/image/bg-header.jpg')">
           <!-- Overlay -->
           <div class="absolute inset-0 bg-white bg-opacity-70"></div>
           <div class="relative z-10 max-w-3xl mx-auto px-4">
             <!-- Judul -->
-            <h1
-              class="text-4xl md:text-5xl font-handwriting text-gray-800 mb-2"
-              data-aos="fade-down"
-            >
+            <h1 class="text-4xl md:text-5xl font-handwriting text-gray-800 mb-2" data-aos="fade-down">
               Undangan Pernikahan
             </h1>
-            <p
-              class="text-2xl font-handwriting text-gray-600 mb-6"
-              data-aos="fade-up"
-              data-aos-delay="200"
-            >
+            <p class="text-2xl font-handwriting text-gray-600 mb-6" data-aos="fade-up" data-aos-delay="200">
               Wafi & Tisa
             </p>
 
             <!-- Kata Sambutan -->
-            <p
-              class="text-gray-700 italic leading-relaxed mb-6"
-              data-aos="fade-up"
-              data-aos-delay="400"
-            >
+            <p class="text-gray-700 italic leading-relaxed mb-6" data-aos="fade-up" data-aos-delay="400">
               Assalamualaikum Wr. Wb. <br />
               Maha suci Allah yang telah menciptakan mahluk-Nya
               berpasang-pasangan. <br />
@@ -114,11 +79,7 @@
             </div>
 
             <!-- Countdown -->
-            <div
-              class="flex justify-center gap-4 mt-6 mb-6"
-              data-aos="fade-up"
-              data-aos-delay="800"
-            >
+            <div class="flex justify-center gap-4 mt-6 mb-6" data-aos="fade-up" data-aos-delay="800">
               <div class="bg-white shadow rounded-lg px-4 py-2">
                 <p class="text-xl font-bold text-pink-600">
                   {{ countdown.days }}
@@ -156,12 +117,8 @@
               <p class="text-sm text-gray-600">Pukul 10:00 WIB</p>
 
               <!-- Tombol Google Calendar -->
-              <a
-                :href="googleCalendarUrl"
-                target="_blank"
-                rel="noopener noreferrer"
-                class="mt-4 inline-flex items-center gap-2 bg-pink-500 text-white px-4 py-2 rounded-full shadow hover:bg-pink-600 transition"
-              >
+              <a :href="googleCalendarUrl" target="_blank" rel="noopener noreferrer"
+                class="mt-4 inline-flex items-center gap-2 bg-pink-500 text-white px-4 py-2 rounded-full shadow hover:bg-pink-600 transition">
                 <Calendar class="w-5 h-5" />
                 <span>Simpan ke Google Calendar</span>
               </a>
@@ -171,52 +128,27 @@
 
         <!-- Mempelai -->
         <section id="mempelai" class="p-6 bg-pink-50 text-center">
-          <h2
-            class="text-3xl font-handwriting text-pink-600 mb-6"
-            data-aos="zoom-in"
-          >
+          <h2 class="text-3xl font-handwriting text-pink-600 mb-6" data-aos="zoom-in">
             Mempelai
           </h2>
           <div class="grid grid-cols-1 md:grid-cols-2 gap-10 max-w-4xl mx-auto">
             <div class="flex flex-col items-center" data-aos="fade-right">
-              <img
-                src="/image/wafi.jpg"
-                alt="Foto Wafi"
-                class="w-40 h-40 object-cover rounded-full shadow-lg border-4 border-white mb-4"
-              />
-              <h3
-                class="text-2xl font-bold"
-                data-aos="zoom-in"
-                data-aos-delay="200"
-              >
+              <img src="/image/wafi.jpg" alt="Foto Wafi"
+                class="w-40 h-40 object-cover rounded-full shadow-lg border-4 border-white mb-4" />
+              <h3 class="text-2xl font-bold" data-aos="zoom-in" data-aos-delay="200">
                 Wafi
               </h3>
-              <p
-                class="text-gray-600 font-handwriting text-lg"
-                data-aos="fade-up"
-                data-aos-delay="400"
-              >
+              <p class="text-gray-600 font-handwriting text-lg" data-aos="fade-up" data-aos-delay="400">
                 Putra Pertama dari Bapak Agus (Alm) & Ibu Rini
               </p>
             </div>
             <div class="flex flex-col items-center" data-aos="fade-left">
-              <img
-                src="/image/tisa.jpg"
-                alt="Foto Tisa"
-                class="w-40 h-40 object-cover rounded-full shadow-lg border-4 border-white mb-4"
-              />
-              <h3
-                class="text-2xl font-bold"
-                data-aos="zoom-in"
-                data-aos-delay="200"
-              >
+              <img src="/image/tisa.jpg" alt="Foto Tisa"
+                class="w-40 h-40 object-cover rounded-full shadow-lg border-4 border-white mb-4" />
+              <h3 class="text-2xl font-bold" data-aos="zoom-in" data-aos-delay="200">
                 Tisa
               </h3>
-              <p
-                class="text-gray-600 font-handwriting text-lg"
-                data-aos="fade-up"
-                data-aos-delay="400"
-              >
+              <p class="text-gray-600 font-handwriting text-lg" data-aos="fade-up" data-aos-delay="400">
                 Putri Kedua dari Bapak Amat & Ibu Imas
               </p>
             </div>
@@ -225,31 +157,21 @@
 
         <!-- Ayat Al-Quran -->
         <section class="p-6 bg-gray-50 text-center">
-          <p
-            class="text-gray-700 italic text-lg max-w-3xl mx-auto"
-            data-aos="fade-up"
-          >
+          <p class="text-gray-700 italic text-lg max-w-3xl mx-auto" data-aos="fade-up">
             “Dan di antara tanda-tanda (kebesaran)-Nya ialah Dia menciptakan
             pasangan-pasangan untukmu dari jenismu sendiri, agar kamu cenderung
             dan merasa tenteram kepadanya, dan Dia menjadikan di antaramu rasa
             kasih dan sayang. Sungguh, pada yang demikian itu benar-benar
             terdapat tanda-tanda (kebesaran Allah) bagi kaum yang berpikir.”
           </p>
-          <p
-            class="mt-2 text-gray-600 font-bold font-handwriting"
-            data-aos="fade-up"
-            data-aos-delay="200"
-          >
+          <p class="mt-2 text-gray-600 font-bold font-handwriting" data-aos="fade-up" data-aos-delay="200">
             (QS. Ar-Rum: 21)
           </p>
         </section>
 
         <!-- Section Akad & Resepsi -->
         <section id="acara" class="p-6 bg-white text-center">
-          <h2
-            class="text-3xl font-handwriting text-pink-600 mb-8"
-            data-aos="zoom-in"
-          >
+          <h2 class="text-3xl font-handwriting text-pink-600 mb-8" data-aos="zoom-in">
             Waktu & Tempat
           </h2>
 
@@ -267,22 +189,15 @@
               </p>
 
               <!-- Tombol Google Maps -->
-              <a
-                href="https://www.google.com/maps?q=-7.3389,112.7271"
-                target="_blank"
-                class="inline-flex items-center gap-2 bg-pink-500 text-white px-4 py-2 rounded-full shadow hover:bg-pink-600 transition"
-              >
+              <a href="https://www.google.com/maps?q=-7.3389,112.7271" target="_blank"
+                class="inline-flex items-center gap-2 bg-pink-500 text-white px-4 py-2 rounded-full shadow hover:bg-pink-600 transition">
                 <MapPin class="w-5 h-5" />
                 <span>Lihat Lokasi</span>
               </a>
             </div>
 
             <!-- Resepsi -->
-            <div
-              class="p-6 bg-pink-50 rounded-xl shadow"
-              data-aos="fade-left"
-              data-aos-delay="200"
-            >
+            <div class="p-6 bg-pink-50 rounded-xl shadow" data-aos="fade-left" data-aos-delay="200">
               <h3 class="text-2xl font-handwriting text-pink-700 mb-2">
                 Resepsi
               </h3>
@@ -292,11 +207,8 @@
               <p class="text-gray-600 mb-3">Jl. Mawar Indah No. 45, Surabaya</p>
 
               <!-- Tombol Google Maps -->
-              <a
-                href="https://www.google.com/maps?q=-7.3389,112.7271"
-                target="_blank"
-                class="inline-flex items-center gap-2 bg-pink-500 text-white px-4 py-2 rounded-full shadow hover:bg-pink-600 transition"
-              >
+              <a href="https://www.google.com/maps?q=-7.3389,112.7271" target="_blank"
+                class="inline-flex items-center gap-2 bg-pink-500 text-white px-4 py-2 rounded-full shadow hover:bg-pink-600 transition">
                 <MapPin class="w-5 h-5" />
                 <span>Lihat Lokasi</span>
               </a>
@@ -306,10 +218,7 @@
 
         <!-- Live Streaming -->
         <section id="live" class="p-6 bg-gray-50 text-center">
-          <h2
-            class="text-3xl font-handwriting text-pink-600 mb-6"
-            data-aos="zoom-in"
-          >
+          <h2 class="text-3xl font-handwriting text-pink-600 mb-6" data-aos="zoom-in">
             Live Streaming
           </h2>
           <p class="text-gray-700 mb-6" data-aos="fade-up">
@@ -317,80 +226,68 @@
             momen bahagia kami secara live melalui Instagram.
           </p>
 
-          <a
-            href="https://www.instagram.com/wafi_tisa_live"
-            target="_blank"
+          <a href="https://www.instagram.com/wafi_tisa_live" target="_blank"
             class="inline-flex items-center gap-2 bg-gradient-to-r from-pink-500 to-purple-600 text-white px-6 py-3 rounded-full shadow-lg hover:scale-105 transform transition"
-            data-aos="zoom-in-up"
-            data-aos-delay="200"
-          >
+            data-aos="zoom-in-up" data-aos-delay="200">
             <Instagram class="w-6 h-6" />
             <span>Tonton di Instagram</span>
           </a>
         </section>
 
         <!-- Story -->
-        <section
-          id="story"
-          class="p-10 bg-cover bg-center relative text-center text-white"
-          style="background-image: url('/image/bg-story.jpg')"
-        >
+        <section id="story" class="p-10 bg-cover bg-center relative text-center text-white"
+          style="background-image: url('/image/bg-story.jpg')">
           <div class="absolute inset-0 bg-black bg-opacity-50"></div>
           <div class="relative z-10 max-w-3xl mx-auto">
-            <h2
-              class="text-3xl font-handwriting text-pink-200 mb-10"
-              data-aos="zoom-in"
-            >
+            <h2 class="text-3xl font-handwriting text-pink-200 mb-10" data-aos="zoom-in">
               Our Story
             </h2>
-            <div
-              class="relative border-l-2 border-pink-300 pl-6 space-y-8 text-left"
-            >
+            <div class="relative border-l-2 border-pink-300 pl-6 space-y-8 text-left">
               <div data-aos="fade-right">
                 <p>
-                  <strong>2018</strong> — Pertemuan pertama kami di kampus. Saat
-                  itu, semua masih terasa biasa saja, tanpa pernah membayangkan
-                  bahwa inilah awal dari kisah panjang yang Allah takdirkan.
+                  <strong>9 September 2024</strong> — Awal Kenal.
+                  Pertama kali saling mengenal lewat Zoom saat memulai
+                  perkuliahan di Universitas Paramadina. Siapa sangka, pertemuan virtual itu jadi awal dari kisah
+                  panjang kami.
                 </p>
               </div>
 
               <div data-aos="fade-left" data-aos-delay="200">
                 <p>
-                  <strong>2019</strong> — Mulai terjalin komunikasi. Dari
-                  sekedar percakapan singkat hingga menjadi teman berbagi
-                  cerita, perlahan kami saling mengenal lebih dalam.
+                  <strong>11 Januari 2025</strong> — Pertemuan Pertama.
+                  Bertemu langsung saat mengerjakan Kuliah kami. Dari kerja sama itu, rasa nyaman mulai tumbuh.
                 </p>
               </div>
 
               <div data-aos="fade-right" data-aos-delay="400">
                 <p>
-                  <strong>2020</strong> — Hari istimewa, kami resmi berpacaran.
-                  Menjalani hari-hari penuh warna, suka dan duka kami lewati
-                  bersama dengan saling menguatkan.
+                  <strong>6 Februari 2025</strong> — Jalan Pertama.
+                  Hari ketika kami memutuskan untuk jalan berdua, dan tujuan kami adalah Dufan. Setelah puas bermain,
+                  kami lanjut makan dan berbincang lama, semakin mengenal satu sama lain.
                 </p>
               </div>
 
               <div data-aos="fade-left" data-aos-delay="600">
                 <p>
-                  <strong>2022</strong> — Tahun penuh tantangan. Kami belajar
-                  arti kesabaran, ketulusan, dan bagaimana tetap bersama meski
-                  badai datang menghadang.
+                  <strong>23 Maret 2025</strong> — Farah Bertemu Keluarga Fajar.
+                  Kesempatan pertama Farah bertemu keluarga Fajar terjadi saat buka bersama di rumahnya. Suasana hangat
+                  itu membuat hubungan terasa semakin dekat.
                 </p>
               </div>
 
               <div data-aos="fade-right" data-aos-delay="800">
                 <p>
-                  <strong>2024</strong> — Sebuah momen tak terlupakan. Wafi
-                  melamar Tisa di hadapan keluarga, mengukuhkan niat untuk
-                  melangkah ke tahap yang lebih serius.
+                  <strong>1 Mei 2025</strong> — Fajar Bertemu Mama.
+                  Giliran Fajar bertemu dengan mama Farah. Pertemuan ini menjadi salah satu momen penting yang semakin
+                  meneguhkan keseriusan kami.
                 </p>
               </div>
 
               <div data-aos="fade-left" data-aos-delay="1000">
                 <p>
-                  <strong>2025</strong> — Dengan izin Allah, kami memutuskan
-                  untuk menikah ❤️. Semoga perjalanan ini menjadi langkah awal
-                  menuju kehidupan baru yang penuh berkah.
+                  <strong>5 September 2025</strong> — Lamaran.
+                  Hari penuh haru dan bahagia. Fajar resmi melamar Farah di hadapan keluarga, mengukuhkan niat kami
+                  untuk melangkah ke jenjang pernikahan.
                 </p>
               </div>
             </div>
@@ -399,107 +296,58 @@
 
         <!-- Galeri -->
         <section id="galeri" class="px-4 md:px-20 py-10 bg-white">
-          <h2
-            class="text-3xl font-handwriting text-pink-600 mb-10 text-center"
-            data-aos="zoom-in"
-          >
+          <h2 class="text-3xl font-handwriting text-pink-600 mb-10 text-center" data-aos="zoom-in">
             Cerita dalam Foto
           </h2>
 
-          <div
-            class="grid grid-cols-2 md:grid-cols-4 gap-4 auto-rows-[150px] md:auto-rows-[200px]"
-          >
+          <div class="grid grid-cols-2 md:grid-cols-4 gap-4 auto-rows-[150px] md:auto-rows-[200px]">
             <!-- Foto 1 - besar -->
-            <div
-              class="col-span-2 row-span-2 relative cursor-pointer"
-              data-aos="zoom-in"
-              @click="openModal('/image/foto-1.jpg')"
-            >
-              <img
-                src="/image/foto-1.jpg"
-                class="absolute inset-0 w-full h-full object-cover rounded-xl shadow-lg"
-                alt="Foto 1"
-              />
+            <div class="col-span-2 row-span-2 relative cursor-pointer" data-aos="zoom-in"
+              @click="openModal('/image/foto-1.jpg')">
+              <img src="/image/foto-1.jpg" class="absolute inset-0 w-full h-full object-cover rounded-xl shadow-lg"
+                alt="Foto 1" />
             </div>
 
             <!-- Foto 2 -->
-            <div
-              class="relative cursor-pointer"
-              data-aos="fade-up"
-              data-aos-delay="100"
-              @click="openModal('/image/foto-2.jpg')"
-            >
-              <img
-                src="/image/foto-2.jpg"
-                class="absolute inset-0 w-full h-full object-cover rounded-xl shadow-lg"
-                alt="Foto 2"
-              />
+            <div class="relative cursor-pointer" data-aos="fade-up" data-aos-delay="100"
+              @click="openModal('/image/foto-2.jpg')">
+              <img src="/image/foto-2.jpg" class="absolute inset-0 w-full h-full object-cover rounded-xl shadow-lg"
+                alt="Foto 2" />
             </div>
 
             <!-- Foto 3 -->
-            <div
-              class="relative cursor-pointer"
-              data-aos="fade-up"
-              data-aos-delay="200"
-              @click="openModal('/image/foto-3.jpg')"
-            >
-              <img
-                src="/image/foto-3.jpg"
-                class="absolute inset-0 w-full h-full object-cover rounded-xl shadow-lg"
-                alt="Foto 3"
-              />
+            <div class="relative cursor-pointer" data-aos="fade-up" data-aos-delay="200"
+              @click="openModal('/image/foto-3.jpg')">
+              <img src="/image/foto-3.jpg" class="absolute inset-0 w-full h-full object-cover rounded-xl shadow-lg"
+                alt="Foto 3" />
             </div>
 
             <!-- Foto 4 - lebar -->
-            <div
-              class="relative cursor-pointer col-span-2"
-              data-aos="fade-up"
-              data-aos-delay="300"
-              @click="openModal('/image/foto-4.jpg')"
-            >
-              <img
-                src="/image/foto-4.jpg"
-                class="absolute inset-0 w-full h-full object-cover rounded-xl shadow-lg"
-                alt="Foto 4"
-              />
+            <div class="relative cursor-pointer col-span-2" data-aos="fade-up" data-aos-delay="300"
+              @click="openModal('/image/foto-4.jpg')">
+              <img src="/image/foto-4.jpg" class="absolute inset-0 w-full h-full object-cover rounded-xl shadow-lg"
+                alt="Foto 4" />
             </div>
 
             <!-- Foto 5 -->
-            <div
-              class="relative cursor-pointer"
-              data-aos="fade-up"
-              data-aos-delay="400"
-              @click="openModal('/image/foto-5.jpg')"
-            >
-              <img
-                src="/image/foto-5.jpg"
-                class="absolute inset-0 w-full h-full object-cover rounded-xl shadow-lg"
-                alt="Foto 5"
-              />
+            <div class="relative cursor-pointer" data-aos="fade-up" data-aos-delay="400"
+              @click="openModal('/image/foto-5.jpg')">
+              <img src="/image/foto-5.jpg" class="absolute inset-0 w-full h-full object-cover rounded-xl shadow-lg"
+                alt="Foto 5" />
             </div>
 
             <!-- Foto 6 -->
-            <div
-              class="relative cursor-pointer"
-              data-aos="fade-up"
-              data-aos-delay="500"
-              @click="openModal('/image/foto-6.jpg')"
-            >
-              <img
-                src="/image/foto-6.jpg"
-                class="absolute inset-0 w-full h-full object-cover rounded-xl shadow-lg"
-                alt="Foto 6"
-              />
+            <div class="relative cursor-pointer" data-aos="fade-up" data-aos-delay="500"
+              @click="openModal('/image/foto-6.jpg')">
+              <img src="/image/foto-6.jpg" class="absolute inset-0 w-full h-full object-cover rounded-xl shadow-lg"
+                alt="Foto 6" />
             </div>
           </div>
         </section>
 
         <!-- Wedding Gift -->
         <section id="gift" class="p-6 bg-pink-50 text-center">
-          <h2
-            class="text-3xl font-handwriting text-pink-600 mb-8"
-            data-aos="zoom-in"
-          >
+          <h2 class="text-3xl font-handwriting text-pink-600 mb-8" data-aos="zoom-in">
             Wedding Gift
           </h2>
           <p class="text-gray-700 mb-6 max-w-2xl mx-auto" data-aos="fade-up">
@@ -510,56 +358,41 @@
 
           <div class="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-4xl mx-auto">
             <!-- BCA -->
-            <div
-              class="p-4 bg-white rounded-xl shadow hover:shadow-lg transition"
-              data-aos="fade-up"
-            >
+            <div class="p-4 bg-white rounded-xl shadow hover:shadow-lg transition" data-aos="fade-up">
               <img src="/image/bca.png" alt="BCA" class="h-12 mx-auto mb-2" />
               <p class="font-semibold text-gray-800">Bank BCA</p>
               <p class="text-gray-600">1234567890</p>
               <p class="text-gray-500 text-sm mb-2">a.n Wafi</p>
-              <button
-                @click="copyRekening('1234567890')"
-                class="flex items-center gap-1 bg-pink-500 text-white px-3 py-1 rounded text-sm hover:bg-pink-600 transition mx-auto"
-              >
+              <button @click="copyRekening('1234567890')"
+                class="flex items-center gap-1 bg-pink-500 text-white px-3 py-1 rounded text-sm hover:bg-pink-600 transition mx-auto">
                 <Copy class="w-4 h-4" />
                 <span>Copy</span>
               </button>
             </div>
 
             <!-- BRI -->
-            <div
-              class="p-4 bg-white rounded-xl shadow hover:shadow-lg transition"
-              data-aos="fade-up"
-              data-aos-delay="200"
-            >
+            <div class="p-4 bg-white rounded-xl shadow hover:shadow-lg transition" data-aos="fade-up"
+              data-aos-delay="200">
               <img src="/image/bri.png" alt="BRI" class="h-12 mx-auto mb-2" />
               <p class="font-semibold text-gray-800">Bank BRI</p>
               <p class="text-gray-600">9876543210</p>
               <p class="text-gray-500 text-sm mb-2">a.n Tisa</p>
-              <button
-                @click="copyRekening('9876543210')"
-                class="flex items-center gap-1 bg-pink-500 text-white px-3 py-1 rounded text-sm hover:bg-pink-600 transition mx-auto"
-              >
+              <button @click="copyRekening('9876543210')"
+                class="flex items-center gap-1 bg-pink-500 text-white px-3 py-1 rounded text-sm hover:bg-pink-600 transition mx-auto">
                 <Copy class="w-4 h-4" />
                 <span>Copy</span>
               </button>
             </div>
 
             <!-- DANA -->
-            <div
-              class="p-4 bg-white rounded-xl shadow hover:shadow-lg transition"
-              data-aos="fade-up"
-              data-aos-delay="400"
-            >
+            <div class="p-4 bg-white rounded-xl shadow hover:shadow-lg transition" data-aos="fade-up"
+              data-aos-delay="400">
               <img src="/image/dana.png" alt="Dana" class="h-12 mx-auto mb-2" />
               <p class="font-semibold text-gray-800">DANA</p>
               <p class="text-gray-600">0812-3456-7890</p>
               <p class="text-gray-500 text-sm mb-2">a.n Wafi</p>
-              <button
-                @click="copyRekening('081234567890')"
-                class="flex items-center gap-1 bg-pink-500 text-white px-3 py-1 rounded text-sm hover:bg-pink-600 transition mx-auto"
-              >
+              <button @click="copyRekening('081234567890')"
+                class="flex items-center gap-1 bg-pink-500 text-white px-3 py-1 rounded text-sm hover:bg-pink-600 transition mx-auto">
                 <Copy class="w-4 h-4" />
                 <span>Copy</span>
               </button>
@@ -568,10 +401,8 @@
 
           <!-- Notifikasi -->
           <transition name="fade">
-            <div
-              v-if="copiedMessage"
-              class="fixed bottom-24 left-1/2 transform -translate-x-1/2 bg-green-500 text-white px-4 py-2 rounded shadow"
-            >
+            <div v-if="copiedMessage"
+              class="fixed bottom-24 left-1/2 transform -translate-x-1/2 bg-green-500 text-white px-4 py-2 rounded shadow">
               {{ copiedMessage }}
             </div>
           </transition>
@@ -584,34 +415,17 @@
           </h2>
 
           <!-- Form -->
-          <form
-            @submit.prevent="addUcapan"
-            class="flex flex-col md:flex-row gap-2 mb-6"
-          >
-            <input
-              v-model="nama"
-              placeholder="Nama"
-              class="border p-2 rounded w-full md:flex-1"
-            />
-            <input
-              v-model="pesan"
-              placeholder="Ucapan"
-              class="border p-2 rounded w-full md:flex-1"
-            />
-            <button
-              class="bg-pink-500 text-white px-4 py-2 rounded w-full md:w-auto"
-            >
+          <form @submit.prevent="addUcapan" class="flex flex-col md:flex-row gap-2 mb-6">
+            <input v-model="nama" placeholder="Nama" class="border p-2 rounded w-full md:flex-1" />
+            <input v-model="pesan" placeholder="Ucapan" class="border p-2 rounded w-full md:flex-1" />
+            <button class="bg-pink-500 text-white px-4 py-2 rounded w-full md:w-auto">
               Kirim
             </button>
           </form>
 
           <!-- Daftar Ucapan -->
           <ul class="space-y-3 mb-6">
-            <li
-              v-for="u in paginatedUcapan"
-              :key="u.id"
-              class="p-3 bg-gray-100 rounded shadow-sm"
-            >
+            <li v-for="u in paginatedUcapan" :key="u.id" class="p-3 bg-gray-100 rounded shadow-sm">
               <div class="flex justify-between items-center">
                 <p class="font-semibold text-pink-600">{{ u.nama }}</p>
                 <span class="text-xs text-gray-500">
@@ -624,21 +438,14 @@
 
           <!-- Pagination -->
           <div class="flex justify-center items-center gap-4">
-            <button
-              @click="prevPage"
-              :disabled="page === 1"
-              class="px-3 py-1 bg-gray-200 rounded disabled:opacity-50"
-            >
+            <button @click="prevPage" :disabled="page === 1" class="px-3 py-1 bg-gray-200 rounded disabled:opacity-50">
               ‹
             </button>
             <span class="text-sm text-gray-600">
               Halaman {{ page }} dari {{ totalPages }}
             </span>
-            <button
-              @click="nextPage"
-              :disabled="page === totalPages"
-              class="px-3 py-1 bg-gray-200 rounded disabled:opacity-50"
-            >
+            <button @click="nextPage" :disabled="page === totalPages"
+              class="px-3 py-1 bg-gray-200 rounded disabled:opacity-50">
               ›
             </button>
           </div>
@@ -647,38 +454,21 @@
         <!-- Penutup -->
         <section id="penutup" class="p-8 bg-pink-50 text-center relative pb-32">
           <div class="max-w-2xl mx-auto">
-            <h2
-              class="text-3xl font-handwriting text-pink-600 mb-6"
-              data-aos="fade-down"
-            >
+            <h2 class="text-3xl font-handwriting text-pink-600 mb-6" data-aos="fade-down">
               Penutup
             </h2>
-            <p
-              class="text-gray-700 leading-relaxed mb-6"
-              data-aos="fade-up"
-              data-aos-delay="200"
-            >
+            <p class="text-gray-700 leading-relaxed mb-6" data-aos="fade-up" data-aos-delay="200">
               Dengan penuh rasa syukur, kami memohon doa restu agar pernikahan
               kami senantiasa diberkahi oleh Allah SWT. Semoga kami dapat
               membina rumah tangga yang
-              <span class="font-semibold text-pink-600"
-                >sakinah, mawaddah, warahmah</span
-              >.
+              <span class="font-semibold text-pink-600">sakinah, mawaddah, warahmah</span>.
             </p>
-            <p
-              class="italic text-gray-600"
-              data-aos="fade-up"
-              data-aos-delay="400"
-            >
+            <p class="italic text-gray-600" data-aos="fade-up" data-aos-delay="400">
               "Semoga Allah menghimpun yang terserak dari kalian berdua,
               memberkahi kalian, menumbuhkan rasa kasih di antara kalian, dan
               menghimpun kalian berdua dalam kebaikan."
             </p>
-            <div
-              class="mt-8 text-lg font-handwriting text-pink-700"
-              data-aos="zoom-in"
-              data-aos-delay="600"
-            >
+            <div class="mt-8 text-lg font-handwriting text-pink-700" data-aos="zoom-in" data-aos-delay="600">
               Wafi & Tisa 💕
             </div>
           </div>
@@ -687,50 +477,32 @@
         <!-- Navigation Sticky -->
         <nav
           class="fixed bottom-0 left-0 right-0 bg-white border-t shadow-lg z-50 flex justify-between md:justify-evenly px-2 md:px-6 py-2"
-          style="width: 100vw; max-width: 100vw; box-sizing: border-box"
-        >
-          <a
-            href="#mempelai"
-            class="flex flex-col items-center text-gray-600 flex-1"
-          >
+          style="width: 100vw; max-width: 100vw; box-sizing: border-box">
+          <a href="#mempelai" class="flex flex-col items-center text-gray-600 flex-1">
             <Heart class="w-6 h-6 bounce-anim" />
             <span class="text-[10px] md:text-xs">Mempelai</span>
           </a>
-          <a
-            href="#story"
-            class="flex flex-col items-center text-gray-600 flex-1"
-          >
+          <a href="#story" class="flex flex-col items-center text-gray-600 flex-1">
             <BookOpen class="w-6 h-6 bounce-anim delay-200" />
             <span class="text-[10px] md:text-xs">Story</span>
           </a>
-          <a
-            href="#galeri"
-            class="flex flex-col items-center text-gray-600 flex-1"
-          >
+          <a href="#galeri" class="flex flex-col items-center text-gray-600 flex-1">
             <Image class="w-6 h-6 bounce-anim delay-400" />
             <span class="text-[10px] md:text-xs">Galeri</span>
           </a>
-          <a
-            href="#guestbook"
-            class="flex flex-col items-center text-gray-600 flex-1"
-          >
+          <a href="#guestbook" class="flex flex-col items-center text-gray-600 flex-1">
             <MessageSquare class="w-6 h-6 bounce-anim delay-600" />
             <span class="text-[10px] md:text-xs">Ucapan</span>
           </a>
         </nav>
 
         <!-- Floating Music Disc -->
-        <div
-          v-if="isOpened"
-          class="fixed bottom-20 left-4 z-50 flex flex-col items-center cursor-pointer"
-          @click="toggleMusic"
-        >
-          <div
-            :class="[
-              'w-16 h-16 rounded-full border-4 border-pink-400 shadow-lg flex items-center justify-center bg-white transition',
-              isPlaying ? 'animate-spin-slow' : '',
-            ]"
-          >
+        <div v-if="isOpened" class="fixed bottom-20 left-4 z-50 flex flex-col items-center cursor-pointer"
+          @click="toggleMusic">
+          <div :class="[
+            'w-16 h-16 rounded-full border-4 border-pink-400 shadow-lg flex items-center justify-center bg-white transition',
+            isPlaying ? 'animate-spin-slow' : '',
+          ]">
             <Music class="w-8 h-8 text-pink-600" />
           </div>
           <p class="text-xs mt-1 text-gray-600">
@@ -929,7 +701,7 @@ function toggleMusic() {
     musikRef.value.pause();
     isPlaying.value = false;
   } else {
-    musikRef.value.play().catch(() => {});
+    musikRef.value.play().catch(() => { });
     isPlaying.value = true;
   }
 }
@@ -992,6 +764,7 @@ html {
 
 /* Navbar Bounce */
 @keyframes bounce {
+
   0%,
   100% {
     transform: translateY(0);
