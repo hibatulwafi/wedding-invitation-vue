@@ -524,6 +524,7 @@ import { ref, computed, onMounted, onUnmounted } from "vue";
 import { Heart, BookOpen, Image, MessageSquare, Music } from "lucide-vue-next";
 import AOS from "aos";
 import "aos/dist/aos.css";
+import { useHead } from "@vueuse/head";
 
 import { db } from "./firebase.js";
 import {
@@ -534,6 +535,32 @@ import {
   orderBy,
   query,
 } from "firebase/firestore";
+
+useHead({
+  title: "Undangan Pernikahan Wafi & Tisa 💍",
+  meta: [
+    {
+      name: "description",
+      content:
+        "Dengan penuh rasa syukur, kami mengundang Anda untuk hadir dan memberikan doa restu pada pernikahan kami.",
+    },
+    {
+      property: "og:title",
+      content: "Undangan Pernikahan Wafi & Tisa 💍",
+    },
+    {
+      property: "og:description",
+      content:
+        "Kami dengan bahagia mengundang Anda untuk menghadiri momen berharga dalam hidup kami. Klik untuk melihat detail undangan.",
+    },
+    { property: "og:type", content: "website" },
+    {
+      property: "og:image",
+      content: "https://einpi.my.id/og-image.png",
+    },
+  ],
+  link: [{ rel: "canonical", href: "https://einpi.my.id" }],
+});
 
 /* ================================
    🔹 STATE
