@@ -7,10 +7,10 @@
         <div class="w-full max-w-md bg-white/10 backdrop-blur-md p-6 rounded-lg shadow-lg mb-6">
             <label class="block text-sm mb-2">Nama Tamu</label>
             <input v-model="nama" type="text" placeholder="contoh: Wafi Putra"
-                class="w-full p-3 rounded bg-white text-black" />
+                class="w-full p-3 rounded bg-white text-black focus:ring focus:ring-yellow-400 outline-none" />
 
             <button @click="generateLink"
-                class="mt-4 w-full bg-yellow-500 hover:bg-yellow-600 text-black font-semibold py-2 rounded">
+                class="mt-4 w-full bg-yellow-500 hover:bg-yellow-600 text-black font-semibold py-2 rounded transition">
                 Generate
             </button>
         </div>
@@ -22,29 +22,39 @@
         </div>
 
         <!-- Hasil Links -->
-        <div v-if="links.length" class="mt-6 w-full max-w-2xl text-center">
-            <p class="mb-2">Daftar Link Undangan:</p>
-            <table class="w-full text-sm text-left bg-white text-black rounded shadow overflow-hidden">
-                <thead class="bg-gray-200">
-                    <tr>
-                        <th class="px-3 py-2">No</th>
-                        <th class="px-3 py-2">Nama</th>
-                        <th class="px-3 py-2">Link</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr v-for="(l, i) in links" :key="i" class="border-t">
-                        <td class="px-3 py-2">{{ i + 1 }}</td>
-                        <td class="px-3 py-2">{{ l.nama }}</td>
-                        <td class="px-3 py-2 text-blue-600 underline">
-                            <a :href="l.link" target="_blank">{{ l.link }}</a>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
+        <div v-if="links.length" class="mt-6 w-full max-w-3xl text-center bg-white/5 p-4 rounded-lg shadow-lg">
+            <p class="mb-4 font-semibold">Daftar Link Undangan:</p>
+
+            <div class="overflow-x-auto">
+                <table class="w-full text-sm text-left bg-white text-black rounded">
+                    <thead class="bg-gray-200">
+                        <tr>
+                            <th class="px-3 py-2">No</th>
+                            <th class="px-3 py-2">Nama</th>
+                            <th class="px-3 py-2">Link</th>
+                            <th class="px-3 py-2 text-center">Aksi</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr v-for="(l, i) in links" :key="i" class="border-t">
+                            <td class="px-3 py-2">{{ i + 1 }}</td>
+                            <td class="px-3 py-2">{{ l.nama }}</td>
+                            <td class="px-3 py-2 text-blue-600 underline truncate max-w-[200px]">
+                                <a :href="l.link" target="_blank">{{ l.link }}</a>
+                            </td>
+                            <td class="px-3 py-2 text-center">
+                                <button @click="copyLink(l.link)"
+                                    class="bg-green-500 hover:bg-green-600 text-white px-3 py-1 rounded text-xs transition">
+                                    Copy
+                                </button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
 
             <!-- Tombol Export -->
-            <div class="flex justify-center gap-4 mt-4">
+            <div class="flex justify-center gap-4 mt-6">
                 <button @click="exportCSV" class="bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded">
                     Export CSV
                 </button>
@@ -52,6 +62,13 @@
                     Export Excel
                 </button>
             </div>
+
+            <!-- Notifikasi -->
+            <transition name="fade">
+                <p v-if="copiedMessage" class="mt-4 text-green-400 font-semibold animate-pulse">
+                    ✅ {{ copiedMessage }}
+                </p>
+            </transition>
         </div>
     </div>
 </template>
@@ -64,6 +81,7 @@ import { saveAs } from "file-saver";
 
 const nama = ref("");
 const links = ref([]);
+const copiedMessage = ref("");
 
 // 🔹 Generate link 1 orang
 function generateLink() {
@@ -132,5 +150,16 @@ function exportExcel() {
     const excelBuffer = XLSX.write(wb, { bookType: "xlsx", type: "array" });
     const blob = new Blob([excelBuffer], { type: "application/octet-stream" });
     saveAs(blob, "undangan.xlsx");
+}
+
+// 🔹 Copy Link
+async function copyLink(link) {
+    try {
+        await navigator.clipboard.writeText(link);
+        copiedMessage.value = "Link berhasil disalin!";
+        setTimeout(() => (copiedMessage.value = ""), 2000);
+    } catch (err) {
+        console.error("❌ Gagal menyalin:", err);
+    }
 }
 </script>

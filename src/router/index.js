@@ -1,17 +1,17 @@
 import { createRouter, createWebHistory } from "vue-router";
-import App from "../App.vue";
+import Index from "../page/index.vue";
 import Generate from "../page/generate.vue";
 
 const routes = [
     {
         path: "/",
         name: "home",
-        component: App, // ini halaman undangan utama
+        component: Index,
     },
     {
         path: "/generate",
         name: "generate",
-        component: Generate, // ini halaman generator link
+        component: Generate,
     },
 ];
 
