@@ -5,23 +5,22 @@ import * as lucide from "lucide-vue-next";
 import "aos/dist/aos.css";
 import AOS from "aos";
 
-import { createHead } from "@vueuse/head";
+// 🔹 Import router
+import router from "./router";
 
 const app = createApp(App);
-const head = createHead(); // inisialisasi vueuse/head
 
-// Daftarkan icon lucide secara global
+// Daftarin semua icon lucide
 Object.entries(lucide).forEach(([name, component]) => {
   app.component(name, component);
 });
 
-// Pakai head
-app.use(head);
+// 🔹 Gunakan router
+app.use(router);
 
-// Mount
 app.mount("#app");
 
-// Inisialisasi AOS
+// AOS animation
 AOS.init({
   duration: 1000,
   once: true,
