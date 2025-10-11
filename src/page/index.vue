@@ -625,7 +625,7 @@ const countdown = ref({
     minutes: "00",
     seconds: "00",
 });
-const weddingDate = new Date("2025-10-12T10:00:00+07:00").getTime();
+const weddingDate = new Date("2025-10-12T12:00:00+07:00").getTime();
 let timer;
 
 function updateCountdown() {
