@@ -43,10 +43,11 @@
                                 <a :href="l.link" target="_blank">{{ l.link }}</a>
                             </td>
                             <td class="px-3 py-2 text-center">
-                                <button @click="copyLink(l.link)"
+                                <button @click="copyLink(l.nama)"
                                     class="bg-green-500 hover:bg-green-600 text-white px-3 py-1 rounded text-xs transition">
                                     Copy
                                 </button>
+
                             </td>
                         </tr>
                     </tbody>
@@ -153,13 +154,45 @@ function exportExcel() {
 }
 
 // 🔹 Copy Link
-async function copyLink(link) {
+// 🔹 Copy Link + Copywriting
+async function copyLink(guest) {
+    const encodedName = encodeURIComponent(guest);
+    const url = `${window.location.origin}?to=${encodedName}`;
+
+    const copywriting = `
+Bismillahirrahmanirrahim
+Assalamu’alaikum Warahmatullahi Wabarakatuh
+
+Yth. Bapak/Ibu/Saudara/i ${guest},
+
+Dengan memohon rahmat dan ridha Allah SWT, dengan penuh rasa syukur, serta tanpa mengurangi rasa hormat. Kami bermaksud mengundang Bapak/Ibu/Saudara/i untuk hadir dalam hari bahagia kami:
+
+Farah Manthovani Dawie Karimah
+Putri kedua dari Bpk Thahirin Noer (Alm) & Ibu Saodah Abdul Qodir
+
+&
+
+Fajar Hermawan
+Putra ketiga dari Bpk Sucipto (Alm) & Ibu Dyah Susilo
+
+Informasi lengkap terkait acara kami, dapat diklik melalui link di bawah ini:
+🔗 ${url}
+
+Kami sangat mengharapkan kehadiran, doa, serta restu dari Bapak/Ibu/Saudara/i untuk keberkahan pernikahan kami.
+
+Wassalamu’alaikum Warahmatullahi Wabarakatuh
+
+Hormat kami,
+Farah & Fajar
+`;
+
     try {
-        await navigator.clipboard.writeText(link);
-        copiedMessage.value = "Link berhasil disalin!";
-        setTimeout(() => (copiedMessage.value = ""), 2000);
+        await navigator.clipboard.writeText(copywriting);
+        copiedMessage.value = "✅ Undangan berhasil disalin!";
+        setTimeout(() => (copiedMessage.value = ""), 3000);
     } catch (err) {
         console.error("❌ Gagal menyalin:", err);
     }
 }
+
 </script>

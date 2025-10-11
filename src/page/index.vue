@@ -69,14 +69,13 @@
                         </p>
 
                         <!-- Save The Date -->
-                        <div class="mb-6" data-aos="zoom-in" data-aos-delay="600">
+                        <div class="mb-8" data-aos="zoom-in" data-aos-delay="600">
                             <h2 class="text-2xl font-handwriting text-pink-600 mb-2">
                                 Save The Date
                             </h2>
                             <p class="text-lg font-semibold text-gray-800">
                                 Minggu, 12 Oktober 2025
                             </p>
-                            <p class="text-sm text-gray-600">Pukul 10:00 WIB</p>
                         </div>
 
                         <!-- Countdown -->
@@ -107,25 +106,15 @@
                             </div>
                         </div>
 
-                        <!-- Save The Date -->
-                        <div class="mb-6 mt-6" data-aos="zoom-in" data-aos-delay="600">
-                            <h2 class="text-2xl font-handwriting text-pink-600 mb-2">
-                                Save The Date
-                            </h2>
-                            <p class="text-lg font-semibold text-gray-800">
-                                Minggu, 12 Oktober 2025
-                            </p>
-                            <p class="text-sm text-gray-600">Pukul 10:00 WIB</p>
-
-                            <!-- Tombol Google Calendar -->
-                            <a :href="googleCalendarUrl" target="_blank" rel="noopener noreferrer"
-                                class="mt-4 inline-flex items-center gap-2 bg-pink-500 text-white px-4 py-2 rounded-full shadow hover:bg-pink-600 transition">
-                                <Calendar class="w-5 h-5" />
-                                <span>Simpan ke Google Calendar</span>
-                            </a>
-                        </div>
+                        <!-- Tombol Google Calendar -->
+                        <a :href="googleCalendarUrl" target="_blank" rel="noopener noreferrer"
+                            class="mt-6 inline-flex items-center gap-2 bg-pink-500 text-white px-6 py-3 rounded-full shadow hover:bg-pink-600 transition">
+                            <Calendar class="w-5 h-5" />
+                            <span>Simpan ke Google Calendar</span>
+                        </a>
                     </div>
                 </header>
+
 
                 <!-- Mempelai -->
                 <section id="mempelai" class="p-6 bg-pink-50 text-center">
@@ -186,18 +175,20 @@
                                 Akad Nikah
                             </h3>
                             <p class="text-gray-700">Minggu, 12 Oktober 2025</p>
-                            <p class="text-gray-700">Pukul 10.00 WIB</p>
-                            <p class="text-gray-600 mt-2">Masjid Agung Al-Akbar</p>
+                            <p class="text-gray-700">
+                                08.00 (GMT+3) / 12.00 WIB
+                            </p>
+                            <p class="text-gray-600 mt-2">Masjidil Haram</p>
                             <p class="text-gray-600 mb-3">
-                                Jl. Raya Masjid No. 123, Surabaya
+                                Makkah Al-Mukarramah, Saudi Arabia
                             </p>
 
                             <!-- Tombol Google Maps -->
-                            <a href="https://www.google.com/maps?q=-7.3389,112.7271" target="_blank"
+                            <!-- <a href="https://maps.app.goo.gl/6fKjsA2F2rjJ5mhs9" target="_blank"
                                 class="inline-flex items-center gap-2 bg-pink-500 text-white px-4 py-2 rounded-full shadow hover:bg-pink-600 transition">
                                 <MapPin class="w-5 h-5" />
                                 <span>Lihat Lokasi</span>
-                            </a>
+                            </a> -->
                         </div>
 
                         <!-- Resepsi -->
@@ -206,19 +197,26 @@
                                 Resepsi
                             </h3>
                             <p class="text-gray-700">Minggu, 12 Oktober 2025</p>
-                            <p class="text-gray-700">Pukul 13.00 WIB - Selesai</p>
-                            <p class="text-gray-600 mt-2">Gedung Graha Cinta</p>
-                            <p class="text-gray-600 mb-3">Jl. Mawar Indah No. 45, Surabaya</p>
+                            <p class="text-gray-700">
+                                21.00–23.00 (GMT+3) / 01.00–03.00 WIB
+                            </p>
+                            <p class="text-gray-600 mt-2">
+                                Makkah Clock Royal Tower Fairmont
+                            </p>
+                            <p class="text-gray-600 mb-3">
+                                Abraj Al-Bait, Makkah Al-Mukarramah, Saudi Arabia
+                            </p>
 
                             <!-- Tombol Google Maps -->
-                            <a href="https://www.google.com/maps?q=-7.3389,112.7271" target="_blank"
+                            <!-- <a href="https://maps.app.goo.gl/yPBrJ6Yo5wK1B2yFA" target="_blank"
                                 class="inline-flex items-center gap-2 bg-pink-500 text-white px-4 py-2 rounded-full shadow hover:bg-pink-600 transition">
                                 <MapPin class="w-5 h-5" />
                                 <span>Lihat Lokasi</span>
-                            </a>
+                            </a> -->
                         </div>
                     </div>
                 </section>
+
 
                 <!-- Live Streaming -->
                 <section id="live" class="p-6 bg-gray-50 text-center">
@@ -230,7 +228,7 @@
                         momen bahagia kami secara live melalui Instagram.
                     </p>
 
-                    <a href="https://www.instagram.com/Fajar_Farah_live" target="_blank"
+                    <a href="https://www.instagram.com/fajarher" target="_blank"
                         class="inline-flex items-center gap-2 bg-gradient-to-r from-pink-500 to-purple-600 text-white px-6 py-3 rounded-full shadow-lg hover:scale-105 transform transition"
                         data-aos="zoom-in-up" data-aos-delay="200">
                         <Instagram class="w-6 h-6" />
@@ -240,12 +238,16 @@
 
                 <!-- Story -->
                 <section id="story" class="p-10 bg-cover bg-center relative text-center text-white"
-                    style="background-image: url('/image/bg-story.jpg')">
-                    <div class="absolute inset-0 bg-black bg-opacity-50"></div>
+                    style="background-image: url('/image/bg-story.jpeg')">
+
+                    <!-- Overlay dengan gradient -->
+                    <div class="absolute inset-0 bg-gradient-to-b from-black/80 via-black/60 to-black/80"></div>
+
                     <div class="relative z-10 max-w-3xl mx-auto">
                         <h2 class="text-3xl font-handwriting text-pink-200 mb-10" data-aos="zoom-in">
                             Our Story
                         </h2>
+
                         <div class="relative border-l-2 border-pink-300 pl-6 space-y-8 text-left">
                             <div data-aos="fade-right">
                                 <p>
@@ -376,36 +378,33 @@
                         melalui transfer berikut:
                     </p>
 
-                    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-4xl mx-auto">
-                        <!-- BCA -->
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto">
                         <div class="p-4 bg-white rounded-xl shadow hover:shadow-lg transition" data-aos="fade-up">
                             <img src="/image/bca.png" alt="BCA" class="h-12 mx-auto mb-2" />
                             <p class="font-semibold text-gray-800">Bank BCA</p>
-                            <p class="text-gray-600">1234567890</p>
+                            <p class="text-gray-600">6871304057</p>
                             <p class="text-gray-500 text-sm mb-2">a.n Fajar</p>
-                            <button @click="copyRekening('1234567890')"
+                            <button @click="copyRekening('6871304057')"
                                 class="flex items-center gap-1 bg-pink-500 text-white px-3 py-1 rounded text-sm hover:bg-pink-600 transition mx-auto">
                                 <Copy class="w-4 h-4" />
                                 <span>Copy</span>
                             </button>
                         </div>
 
-                        <!-- BRI -->
                         <div class="p-4 bg-white rounded-xl shadow hover:shadow-lg transition" data-aos="fade-up"
                             data-aos-delay="200">
-                            <img src="/image/bri.png" alt="BRI" class="h-12 mx-auto mb-2" />
-                            <p class="font-semibold text-gray-800">Bank BRI</p>
-                            <p class="text-gray-600">9876543210</p>
-                            <p class="text-gray-500 text-sm mb-2">a.n Farah</p>
-                            <button @click="copyRekening('9876543210')"
+                            <img src="/image/mandiri.png" alt="BRI" class="h-12 mx-auto mb-2" />
+                            <p class="font-semibold text-gray-800">Bank Mandiri</p>
+                            <p class="text-gray-600">9000023843981</p>
+                            <p class="text-gray-500 text-sm mb-2">a.n Farah Manthovani</p>
+                            <button @click="copyRekening('9000023843981')"
                                 class="flex items-center gap-1 bg-pink-500 text-white px-3 py-1 rounded text-sm hover:bg-pink-600 transition mx-auto">
                                 <Copy class="w-4 h-4" />
                                 <span>Copy</span>
                             </button>
                         </div>
 
-                        <!-- DANA -->
-                        <div class="p-4 bg-white rounded-xl shadow hover:shadow-lg transition" data-aos="fade-up"
+                        <!-- <div class="p-4 bg-white rounded-xl shadow hover:shadow-lg transition" data-aos="fade-up"
                             data-aos-delay="400">
                             <img src="/image/dana.png" alt="Dana" class="h-12 mx-auto mb-2" />
                             <p class="font-semibold text-gray-800">DANA</p>
@@ -416,10 +415,9 @@
                                 <Copy class="w-4 h-4" />
                                 <span>Copy</span>
                             </button>
-                        </div>
+                        </div> -->
                     </div>
 
-                    <!-- Notifikasi -->
                     <transition name="fade">
                         <div v-if="copiedMessage"
                             class="fixed bottom-24 left-1/2 transform -translate-x-1/2 bg-green-500 text-white px-4 py-2 rounded shadow">
@@ -535,7 +533,7 @@
 
         <!-- Audio -->
         <audio ref="musikRef" loop>
-            <source src="../public/music/musik.mp3" type="audio/mpeg" />
+            <source src="/music/musik.mp3" type="audio/mpeg" />
         </audio>
     </div>
 </template>
@@ -556,7 +554,6 @@ import {
     orderBy,
     query,
 } from "firebase/firestore";
-
 useHead({
     title: "Undangan Pernikahan Farah & Fajar 💍",
     meta: [
@@ -576,12 +573,38 @@ useHead({
         },
         { property: "og:type", content: "website" },
         {
+            property: "og:url",
+            content: "https://wedding-farahfajar.my.id",
+        },
+        {
             property: "og:image",
-            content: "https://einpi.my.id/og-image.png",
+            content: "https://wedding-farahfajar.my.id/og-image.png",
+        },
+        {
+            name: "twitter:card",
+            content: "summary_large_image",
+        },
+        {
+            name: "twitter:title",
+            content: "Undangan Pernikahan Farah & Fajar 💍",
+        },
+        {
+            name: "twitter:description",
+            content:
+                "Dengan penuh rasa syukur, kami mengundang Anda untuk hadir dan memberikan doa restu pada pernikahan kami.",
+        },
+        {
+            name: "twitter:image",
+            content: "https://wedding-farahfajar.my.id/og-image.png",
         },
     ],
-    link: [{ rel: "canonical", href: "https://einpi.my.id" }],
+    link: [
+        { rel: "icon", type: "image/png", href: "/favicon.png" },
+        { rel: "apple-touch-icon", href: "/favicon.png" },
+        { rel: "canonical", href: "https://wedding-farahfajar.my.id" },
+    ],
 });
+
 
 /* ================================
    🔹 STATE
@@ -629,18 +652,17 @@ function updateCountdown() {
         ),
     };
 }
-
 /* ================================
    🔹 GOOGLE CALENDAR LINK
 ================================ */
 const googleCalendarUrl = computed(() => {
-    const start = "20251012T100000"; // 12 Okt 2025, 10:00 WIB
-    const end = "20251012T120000"; // 2 jam acara
-    const text = encodeURIComponent("Pernikahan Farah & Fajar 💍");
+    const start = "20251012T050000Z"; // 12 Okt 2025 08:00 GMT+3 (UTC 05:00)
+    const end = "20251012T070000Z";   // 2 jam
+    const text = encodeURIComponent("Akad Nikah Farah & Fajar 💍");
     const details = encodeURIComponent(
-        "Dengan penuh syukur, kami mengundang Anda untuk menghadiri pernikahan kami."
+        "Kami sangat mengharapkan doa serta restu dari Bapak/Ibu/Saudara/i untuk keberkahan pernikahan kami"
     );
-    const location = encodeURIComponent("Jakarta, Indonesia");
+    const location = encodeURIComponent("Masjidil Haram, Makkah, Saudi Arabia");
 
     return `https://www.google.com/calendar/render?action=TEMPLATE&text=${text}&dates=${start}/${end}&details=${details}&location=${location}`;
 });
